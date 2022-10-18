@@ -3,6 +3,7 @@ set -e
 
 # setup ros environment
 source "/opt/ros/$ROS_DISTRO/setup.bash"
+source "/root/ual_ws/devel/setup.bash"
 
 echo ""
 echo "---------------------------------------------------------"
@@ -11,4 +12,4 @@ echo "---------------------------------------------------------"
 echo ""
 
 # Useful to run any command when container starts
-exec "bash"
+roslaunch ual_backend_mavros simulation.launch --wait

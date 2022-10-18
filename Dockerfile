@@ -43,9 +43,13 @@ RUN git clone https://github.com/PX4/Firmware.git && \
     cd Firmware && \
     git checkout v1.10.2 && \
     git submodule update --init --recursive && \
-    make 
+    make && \
+    make px4_sitl_default gazebo || true
 
-WORKDIR ${UAL_WS}/src/Firmware 
+WORKDIR ${UAL_WS}
+RUN /bin/bash -c '. /opt/ros/$ROS_DISTRO/setup.bash; \
+                  catkin_make'
+
 # setup entrypoint
 COPY ./entrypoint.sh /
 RUN chmod +x /entrypoint.sh

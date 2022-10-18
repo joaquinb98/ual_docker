@@ -36,7 +36,7 @@ function main()
     fi
 
     # Make sure processes in the container can connect to the x server
-    # configure_xserver
+    configure_xserver
 
     docker build -t $DOCKER_IMG_NAME . && \
 
